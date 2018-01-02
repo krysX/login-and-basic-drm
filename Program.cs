@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace LoginAndDRM
@@ -7,23 +7,32 @@ namespace LoginAndDRM
     {
         static void Main(string[] args)
         {
-            PassChangeTest();
-            KeysTest();
+            AccountsTest();
+            DRMTest();
         }
 
-        static void PassChangeTest()
+        static void AccountsTest()
         {
             AccountManager accMan = new AccountManager();
             accMan.Register("krysX", "password");
             accMan.Login("krysX", "password");
             accMan.PrintUserData();
             Console.WriteLine("");
-            accMan.ChangePassword("password", "krysX123");
+            accMan.ChangePassword("password", "qwertz");
             accMan.PrintUserData();
             Console.WriteLine("");
+            accMan.AddSoftware("Minecraft");
+            accMan.Logout();
+            accMan.Logout();
+            accMan.Login("krysX", "test");
+            accMan.Register("krysX", "gvrjkgjresh");
+            accMan.Register("test", "qwertz");
+            accMan.Register("krysX", "qwertz");
+            accMan.Login("krysX", "qwertz");
+            accMan.PrintUserData();
         }
 
-        static void KeysTest()
+        static void DRMTest()
         {
             AccountManager accMan = new AccountManager();
             accMan.Login("admin", "admin");
